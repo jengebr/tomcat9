@@ -67,6 +67,8 @@ public final class EmbeddedServletOptions implements Options {
      */
     private TrimSpacesOption trimSpaces = TrimSpacesOption.FALSE;
 
+    private String useNonstandardTagOptimizations;
+
     /**
      * Determines whether tag handler pooling is enabled.
      */
@@ -253,6 +255,11 @@ public final class EmbeddedServletOptions implements Options {
     }
 
     @Override
+    public String getUseNonstandardTagOptimizations() {
+        return useNonstandardTagOptimizations;
+    }
+
+   @Override
     public boolean isPoolingEnabled() {
         return isPoolingEnabled;
     }
@@ -650,6 +657,11 @@ public final class EmbeddedServletOptions implements Options {
         String classpath = config.getInitParameter("classpath");
         if (classpath != null) {
             this.classpath = classpath;
+        }
+
+        String useNonstandardTagOptimizations = config.getInitParameter("useNonstandardTagOptimizations");
+        if (useNonstandardTagOptimizations != null) {
+            this.useNonstandardTagOptimizations = useNonstandardTagOptimizations;
         }
 
         /*
